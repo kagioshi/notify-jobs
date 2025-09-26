@@ -1,0 +1,132 @@
+{
+  "id": "result",
+  "label": "Result",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "Result title"
+        }
+      },
+      "short_summary": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Short Summary",
+          "placeholder": "Brief summary of the result",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Body",
+          "placeholder": "Full result content",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "published_date": {
+        "type": "Date",
+        "config": {
+          "label": "Published Date",
+          "placeholder": ""
+        }
+      },
+      "organization": {
+        "type": "Text",
+        "config": {
+          "label": "Organization",
+          "placeholder": "Organization name"
+        }
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": "Result location"
+        }
+      },
+      "result_pdf": {
+        "type": "Link",
+        "config": {
+          "label": "Result PDF",
+          "placeholder": "Result PDF file",
+          "select": "document"
+        }
+      },
+      "result_type": {
+        "type": "Select",
+        "config": {
+          "label": "Result Type",
+          "placeholder": "Type of result",
+          "options": ["Final", "Provisional", "Merit List", "Cutoff"]
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "Category",
+          "placeholder": "Select category",
+          "options": [
+            "All India Govt Jobs",
+            "State Govt Jobs", 
+            "Bank Jobs",
+            "Teaching Jobs",
+            "Engineering Jobs",
+            "Railway Jobs",
+            "Police/Defence Jobs",
+            "Education"
+          ]
+        }
+      },
+      "state": {
+        "type": "Select",
+        "config": {
+          "label": "State",
+          "placeholder": "Select state",
+          "options": [
+            "AP", "AS", "BR", "CG", "DL", "GJ", "HP", "HR", "JH", "KA",
+            "KL", "MH", "MP", "OD", "PB", "RJ", "TN", "TS", "UK", "UP", "WB"
+          ]
+        }
+      },
+      "is_featured": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Featured",
+          "placeholder_false": "Not Featured",
+          "placeholder_true": "Featured",
+          "default_value": false
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "SEO title for search engines"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "SEO description for search engines"
+        }
+      }
+    }
+  }
+}

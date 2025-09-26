@@ -1,0 +1,162 @@
+{
+  "id": "site_settings",
+  "label": "Site Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "header_logo": {
+        "type": "Image",
+        "config": {
+          "label": "Header Logo",
+          "constraint": {
+            "width": 300,
+            "height": 100
+          },
+          "thumbnails": [
+            {
+              "name": "mobile",
+              "width": 150,
+              "height": 50
+            }
+          ]
+        }
+      },
+      "mobile_app_link": {
+        "type": "Link",
+        "config": {
+          "label": "Mobile App Link",
+          "placeholder": "Link to mobile app",
+          "allowTargetBlank": true
+        }
+      },
+      "social_links": {
+        "type": "Group",
+        "config": {
+          "label": "Social Links",
+          "fields": {
+            "platform": {
+              "type": "Select",
+              "config": {
+                "label": "Platform",
+                "options": ["Facebook", "Twitter", "Instagram", "LinkedIn", "YouTube", "Telegram"]
+              }
+            },
+            "url": {
+              "type": "Link",
+              "config": {
+                "label": "URL",
+                "placeholder": "Social media URL",
+                "allowTargetBlank": true
+              }
+            }
+          }
+        }
+      },
+      "cusdis_host": {
+        "type": "Text",
+        "config": {
+          "label": "Cusdis Host",
+          "placeholder": "https://cusdis.com",
+          "default_value": "https://cusdis.com"
+        }
+      },
+      "cusdis_app_id_placeholder": {
+        "type": "Text",
+        "config": {
+          "label": "Cusdis App ID (Note: Use NEXT_PUBLIC_CUSDIS_APP_ID env var)",
+          "placeholder": "For reference only - use env variable in production"
+        }
+      },
+      "gtm_id_placeholder": {
+        "type": "Text",
+        "config": {
+          "label": "GTM ID (Note: Use NEXT_PUBLIC_GTM_ID env var)",
+          "placeholder": "For reference only - use env variable in production"
+        }
+      }
+    },
+    "Ad Management": {
+      "ad_slots": {
+        "type": "Group",
+        "config": {
+          "label": "Ad Slots",
+          "fields": {
+            "slot_name": {
+              "type": "Select",
+              "config": {
+                "label": "Slot Name",
+                "options": [
+                  "header",
+                  "mobile_sticky", 
+                  "sidebar_top",
+                  "sidebar_mid",
+                  "sidebar_bottom",
+                  "inline_top",
+                  "inline_mid",
+                  "inline_bottom",
+                  "footer"
+                ]
+              }
+            },
+            "slot_key": {
+              "type": "Text",
+              "config": {
+                "label": "Slot Key",
+                "placeholder": "Unique identifier for this ad slot"
+              }
+            },
+            "snippet": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Ad Snippet",
+                "placeholder": "HTML/JavaScript ad code (WARNING: Only trusted admin should edit)",
+                "allowTargetBlank": true,
+                "multi": "preformatted"
+              }
+            },
+            "is_active": {
+              "type": "Boolean",
+              "config": {
+                "label": "Is Active",
+                "placeholder_false": "Inactive",
+                "placeholder_true": "Active",
+                "default_value": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "SEO Defaults": {
+      "default_meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Default Meta Title",
+          "placeholder": "Default page title"
+        }
+      },
+      "default_meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Default Meta Description",
+          "placeholder": "Default page description"
+        }
+      },
+      "site_name": {
+        "type": "Text",
+        "config": {
+          "label": "Site Name",
+          "placeholder": "JobAlert"
+        }
+      },
+      "site_url": {
+        "type": "Text",
+        "config": {
+          "label": "Site URL",
+          "placeholder": "https://jobalert.example.com"
+        }
+      }
+    }
+  }
+}

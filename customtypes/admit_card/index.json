@@ -1,0 +1,139 @@
+{
+  "id": "admit_card",
+  "label": "Admit Card",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "Admit card title"
+        }
+      },
+      "short_summary": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Short Summary",
+          "placeholder": "Brief summary of the admit card",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Body",
+          "placeholder": "Full admit card content",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "published_date": {
+        "type": "Date",
+        "config": {
+          "label": "Published Date",
+          "placeholder": ""
+        }
+      },
+      "exam_date": {
+        "type": "Date",
+        "config": {
+          "label": "Exam Date",
+          "placeholder": ""
+        }
+      },
+      "organization": {
+        "type": "Text",
+        "config": {
+          "label": "Organization",
+          "placeholder": "Organization name"
+        }
+      },
+      "location": {
+        "type": "Text",
+        "config": {
+          "label": "Location",
+          "placeholder": "Exam location"
+        }
+      },
+      "download_link": {
+        "type": "Link",
+        "config": {
+          "label": "Download Link",
+          "placeholder": "Admit card download link",
+          "allowTargetBlank": true
+        }
+      },
+      "hall_ticket_file": {
+        "type": "Link",
+        "config": {
+          "label": "Hall Ticket File",
+          "placeholder": "Hall ticket PDF",
+          "select": "document"
+        }
+      },
+      "category": {
+        "type": "Select",
+        "config": {
+          "label": "Category",
+          "placeholder": "Select category",
+          "options": [
+            "All India Govt Jobs",
+            "State Govt Jobs", 
+            "Bank Jobs",
+            "Teaching Jobs",
+            "Engineering Jobs",
+            "Railway Jobs",
+            "Police/Defence Jobs",
+            "Education"
+          ]
+        }
+      },
+      "state": {
+        "type": "Select",
+        "config": {
+          "label": "State",
+          "placeholder": "Select state",
+          "options": [
+            "AP", "AS", "BR", "CG", "DL", "GJ", "HP", "HR", "JH", "KA",
+            "KL", "MH", "MP", "OD", "PB", "RJ", "TN", "TS", "UK", "UP", "WB"
+          ]
+        }
+      },
+      "is_featured": {
+        "type": "Boolean",
+        "config": {
+          "label": "Is Featured",
+          "placeholder_false": "Not Featured",
+          "placeholder_true": "Featured",
+          "default_value": false
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "SEO title for search engines"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "SEO description for search engines"
+        }
+      }
+    }
+  }
+}
