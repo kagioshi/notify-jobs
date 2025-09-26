@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Jobs Notification Website Design System - Modern & Professional */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 215 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Purple brand colors matching reference */
+    --primary: 259 94% 51%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 259 90% 65%;
+    --primary-dark: 259 85% 35%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary blues */
+    --secondary: 220 60% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 220 55% 65%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Job category colors */
+    --category-tech: 259 94% 51%;
+    --category-healthcare: 350 85% 60%;
+    --category-finance: 142 85% 45%;
+    --category-education: 35 85% 55%;
+    --category-marketing: 280 85% 60%;
+    --category-design: 200 85% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 220 20% 95%;
+    --muted-foreground: 215 15% 50%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 220 15% 94%;
+    --accent-foreground: 215 25% 15%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 259 94% 51%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(259 94% 51%), hsl(220 85% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 20% 98%));
+    --gradient-category: linear-gradient(135deg, hsl(var(--category-bg)), hsl(var(--category-bg-light)));
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px hsl(215 25% 15% / 0.05);
+    --shadow-md: 0 4px 12px hsl(215 25% 15% / 0.1);
+    --shadow-lg: 0 8px 24px hsl(215 25% 15% / 0.15);
+    --shadow-hero: 0 20px 40px hsl(259 94% 51% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,33 +82,37 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 215 25% 8%;
+    --foreground: 220 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 215 25% 10%;
+    --card-foreground: 220 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 215 25% 10%;
+    --popover-foreground: 220 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 259 94% 51%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 60% 50%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 25% 15%;
+    --muted-foreground: 220 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 215 25% 15%;
+    --accent-foreground: 220 20% 95%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 215 25% 15%;
+    --input: 215 25% 15%;
+    --ring: 259 94% 51%;
+
+    /* Dark gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(259 94% 51%), hsl(220 85% 45%));
+    --gradient-card: linear-gradient(145deg, hsl(215 25% 10%), hsl(215 25% 12%));
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +130,77 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Hero gradient background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+    box-shadow: var(--shadow-hero);
+  }
+
+  /* Card with subtle gradient */
+  .card-gradient {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+  }
+
+  .card-gradient:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /* Category cards with specific colors */
+  .category-tech { --category-bg: var(--category-tech); --category-bg-light: 259 90% 65%; }
+  .category-healthcare { --category-bg: var(--category-healthcare); --category-bg-light: 350 80% 70%; }
+  .category-finance { --category-bg: var(--category-finance); --category-bg-light: 142 80% 60%; }
+  .category-education { --category-bg: var(--category-education); --category-bg-light: 35 80% 70%; }
+  .category-marketing { --category-bg: var(--category-marketing); --category-bg-light: 280 80% 70%; }
+  .category-design { --category-bg: var(--category-design); --category-bg-light: 200 80% 70%; }
+
+  .category-card {
+    background: var(--gradient-category);
+    transition: var(--transition-bounce);
+  }
+
+  .category-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Job notification items */
+  .job-item {
+    transition: var(--transition-smooth);
+    border-left: 3px solid transparent;
+  }
+
+  .job-item:hover {
+    border-left-color: hsl(var(--primary));
+    background: hsl(var(--accent));
+    transform: translateX(4px);
+  }
+
+  /* Search enhancements */
+  .search-input {
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
+  }
+
+  .search-input:focus-within {
+    box-shadow: var(--shadow-lg), 0 0 0 3px hsl(var(--primary) / 0.1);
+  }
+
+  /* State buttons */
+  .state-button {
+    transition: var(--transition-bounce);
+  }
+
+  .state-button:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: scale(1.1);
   }
 }
