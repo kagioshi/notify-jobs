@@ -1,6 +1,5 @@
 import * as prismic from '@prismicio/client'
 import * as prismicNext from '@prismicio/next'
-import { enableAutoPreviews } from '@prismicio/next'
 
 export const repositoryName = process.env.PRISMIC_REPOSITORY_NAME || 'jobs-notification'
 
@@ -32,7 +31,7 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
     ...config,
   })
 
-  prismicNext.enableAutoPreviews({ client, previewData: config.previewData, req: config.req })
+  prismicNext.enableAutoPreviews({ client })
 
   return client
 }
