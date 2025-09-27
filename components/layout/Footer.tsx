@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { AdSlot } from '@/components/common/AdSlot';
 
 const Footer = () => {
@@ -63,50 +63,50 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-foreground mb-4">Quick Links</h4>
               <ul className="space-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link 
-                      to={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Categories */}
-            <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">Categories</h4>
-              <ul className="space-y-2">
-                {categories.map((category) => (
-                  <li key={category.href}>
-                    <Link 
-                      to={category.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {category.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
-              <ul className="space-y-2">
-                {resources.map((resource) => (
-                  <li key={resource.href}>
-                    <Link 
-                      to={resource.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {resource.label}
-                    </Link>
-                  </li>
-                ))}
+                 {quickLinks.map((link) => (
+                   <li key={link.href}>
+                     <Link 
+                       href={link.href}
+                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                     >
+                       {link.label}
+                     </Link>
+                   </li>
+                 ))}
+               </ul>
+             </div>
+ 
+             {/* Categories */}
+             <div>
+               <h4 className="text-lg font-semibold text-foreground mb-4">Categories</h4>
+               <ul className="space-y-2">
+                 {categories.map((category) => (
+                   <li key={category.href}>
+                     <Link 
+                       href={category.href}
+                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                     >
+                       {category.label}
+                     </Link>
+                   </li>
+                 ))}
+               </ul>
+             </div>
+ 
+             {/* Resources */}
+             <div>
+               <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
+               <ul className="space-y-2">
+                 {resources.map((resource) => (
+                   <li key={resource.href}>
+                     <Link 
+                       href={resource.href}
+                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                     >
+                       {resource.label}
+                     </Link>
+                   </li>
+                 ))}
               </ul>
             </div>
           </div>
@@ -120,17 +120,17 @@ const Footer = () => {
             <div className="text-sm mb-4 md:mb-0">
               © 2024 JobAlert. All rights reserved.
             </div>
-            <div className="flex space-x-6 text-sm">
-              <Link to="/privacy" className="hover:text-muted-foreground transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-muted-foreground transition-colors">
-                Terms of Service
-              </Link>
-              <Link to="/contact" className="hover:text-muted-foreground transition-colors">
-                Contact Us
-              </Link>
-            </div>
+             <div className="flex space-x-6 text-sm">
+               <Link href="/privacy" className="hover:text-muted-foreground transition-colors">
+                 Privacy Policy
+               </Link>
+               <Link href="/terms" className="hover:text-muted-foreground transition-colors">
+                 Terms of Service
+               </Link>
+               <Link href="/contact" className="hover:text-muted-foreground transition-colors">
+                 Contact Us
+               </Link>
+             </div>
           </div>
         </div>
       </div>
