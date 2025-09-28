@@ -79,8 +79,9 @@ const TTSControls: React.FC<TTSControlsProps> = ({
   }
 
   return (
-    <div className={cn('flex items-center gap-1', className)}>
-      <div className="flex items-center gap-1 border rounded-md p-1 bg-background">
+    <div className={cn('flex items-center gap-2', className)}>
+      {/* Neo-Brutalistic TTS Controls */}
+      <div className="flex items-center gap-1 brutal-box p-1">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -88,10 +89,10 @@ const TTSControls: React.FC<TTSControlsProps> = ({
               size="sm"
               onClick={handlePlay}
               disabled={!getTextToSpeak().trim()}
-              className="h-8 w-8 p-0 focus-ring"
+              className="h-8 w-8 p-0 focus-ring brutal-btn"
               aria-label={isSpeaking && isPaused ? "Resume reading" : "Start reading"}
             >
-              <Play className="h-3 w-3" />
+              <Play className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -106,10 +107,10 @@ const TTSControls: React.FC<TTSControlsProps> = ({
               size="sm"
               onClick={handlePause}
               disabled={!isSpeaking || isPaused}
-              className="h-8 w-8 p-0 focus-ring"
+              className="h-8 w-8 p-0 focus-ring brutal-btn"
               aria-label="Pause reading"
             >
-              <Pause className="h-3 w-3" />
+              <Pause className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -124,10 +125,10 @@ const TTSControls: React.FC<TTSControlsProps> = ({
               size="sm"
               onClick={handleStop}
               disabled={!isSpeaking}
-              className="h-8 w-8 p-0 focus-ring"
+              className="h-8 w-8 p-0 focus-ring brutal-btn"
               aria-label="Stop reading"
             >
-              <Square className="h-3 w-3" />
+              <Square className="h-4 w-4" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -136,9 +137,11 @@ const TTSControls: React.FC<TTSControlsProps> = ({
         </Tooltip>
       </div>
 
-      <div className="flex items-center text-xs text-muted-foreground ml-2">
+      <div className="flex items-center text-xs font-bold text-foreground bg-secondary px-2 py-1 border-2 border-foreground">
         <Volume2 className="h-3 w-3 mr-1" />
-        {isSpeaking ? (isPaused ? 'Paused' : 'Speaking') : 'TTS'}
+        <span className="uppercase">
+          {isSpeaking ? (isPaused ? 'PAUSED' : 'SPEAKING') : 'TTS'}
+        </span>
       </div>
     </div>
   )

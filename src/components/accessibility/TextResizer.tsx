@@ -90,18 +90,19 @@ const TextResizer: React.FC<TextResizerProps> = ({
   }
 
   return (
-    <div className={cn('flex items-center gap-1', className)}>
-      <div className="flex items-center gap-1 border rounded-md p-1 bg-background">
+    <div className={cn('flex items-center gap-2', className)}>
+      {/* Neo-Brutalistic Text Resizer */}
+      <div className="flex items-center gap-1 brutal-box p-1">
         <Button
           variant="ghost"
           size="sm"
           onClick={decreaseSize}
           disabled={scale <= minScale}
-          className="h-8 w-8 p-0 focus-ring"
+          className="h-8 w-8 p-0 focus-ring brutal-btn text-xs font-black"
           title="Decrease text size"
           aria-label="Decrease text size"
         >
-          <Minus className="h-3 w-3" />
+          A-
         </Button>
         
         <Button
@@ -109,11 +110,10 @@ const TextResizer: React.FC<TextResizerProps> = ({
           size="sm"
           onClick={resetSize}
           disabled={scale === 1}
-          className="h-8 px-2 text-xs font-medium focus-ring"
+          className="h-8 px-2 text-xs font-black focus-ring brutal-btn"
           title="Reset text size to normal"
           aria-label="Reset text size to normal"
         >
-          <RotateCcw className="h-3 w-3 mr-1" />
           A
         </Button>
         
@@ -122,15 +122,15 @@ const TextResizer: React.FC<TextResizerProps> = ({
           size="sm"
           onClick={increaseSize}
           disabled={scale >= maxScale}
-          className="h-8 w-8 p-0 focus-ring"
+          className="h-8 w-8 p-0 focus-ring brutal-btn text-xs font-black"
           title="Increase text size"
           aria-label="Increase text size"
         >
-          <Plus className="h-3 w-3" />
+          A+
         </Button>
       </div>
       
-      <span className="text-xs text-muted-foreground ml-2 min-w-[3rem]">
+      <span className="text-xs font-bold text-foreground bg-accent px-2 py-1 border-2 border-foreground min-w-[4rem] text-center">
         {getPercentage()}
       </span>
 

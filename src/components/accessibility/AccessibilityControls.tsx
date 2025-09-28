@@ -31,24 +31,22 @@ const AccessibilityControls: React.FC<AccessibilityControlsProps> = ({
 
   return (
     <div className={cn(
-      'flex items-center gap-4 py-3 px-4 bg-muted/30 rounded-lg border',
-      'animate-fade-in',
+      'flex flex-wrap items-center gap-4 py-4 px-6 brutal-box bg-accent/10',
+      'animate-fade-in sticky top-0 z-50',
       className
     )}>
-      <div className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
-        <span>Accessibility:</span>
+      <div className="flex items-center gap-2 text-sm font-black text-foreground uppercase tracking-wider">
+        <span className="bg-primary text-primary-foreground px-2 py-1 border-2 border-foreground">
+          ACCESSIBILITY
+        </span>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4">
         {showTextResizer && (
           <TextResizer 
             contentSelector={contentSelector}
             className="flex-shrink-0"
           />
-        )}
-
-        {showTextResizer && showTTS && (
-          <Separator orientation="vertical" className="h-6" />
         )}
 
         {showTTS && (
@@ -62,8 +60,8 @@ const AccessibilityControls: React.FC<AccessibilityControlsProps> = ({
         )}
       </div>
 
-      <div className="text-xs text-muted-foreground ml-auto hidden sm:block">
-        Use keyboard Tab + Enter to navigate controls
+      <div className="text-xs font-bold text-foreground ml-auto hidden sm:block bg-muted px-2 py-1 border-2 border-foreground">
+        USE TAB + ENTER TO NAVIGATE
       </div>
     </div>
   )

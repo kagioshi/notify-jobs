@@ -2,43 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design System Variables */
+/* Neo-Brutalistic Design System */
 @layer base {
   :root {
-    /* Color palette - Professional job portal theme */
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    /* Neo-Brutalistic Color Palette - High Contrast */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 5%;
     --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --card-foreground: 0 0% 5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
+    --popover-foreground: 0 0% 5%;
     
-    /* Primary - Professional blue */
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --primary-glow: 221.2 83.2% 60%;
-    --primary-variant: 221.2 83.2% 45%;
+    /* Primary - Electric Blue */
+    --primary: 220 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 220 100% 60%;
+    --primary-variant: 220 100% 40%;
     
-    /* Secondary - Success green */
-    --secondary: 142.1 76.2% 36.3%;
-    --secondary-foreground: 355.7 100% 97.3%;
+    /* Secondary - Hot Pink */
+    --secondary: 330 100% 50%;
+    --secondary-foreground: 0 0% 100%;
     
-    /* Accent - Warm orange */
-    --accent: 24.6 95% 53.1%;
-    --accent-foreground: 60 9.1% 97.8%;
+    /* Accent - Neon Yellow */
+    --accent: 60 100% 50%;
+    --accent-foreground: 0 0% 5%;
     
     /* Muted colors */
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 30%;
     
-    /* Destructive */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive - Bright Red */
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
     
-    /* Border and input */
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
+    /* Border and input - Strong contrast */
+    --border: 0 0% 0%;
+    --input: 0 0% 95%;
+    --ring: 0 0% 0%;
+    
+    /* Content font scaling */
+    --content-font-scale: 1;
     
     /* Chart colors */
     --chart-1: 12 76% 61%;
@@ -47,44 +50,45 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
-    --gradient-muted: linear-gradient(180deg, hsl(var(--muted)), hsl(var(--background)));
+    /* Neo-Brutalistic Gradients - Bold and Sharp */
+    --gradient-primary: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-secondary: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary)));
+    --gradient-danger: linear-gradient(90deg, hsl(var(--destructive)), hsl(330 100% 60%));
     
-    /* Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
-    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
-    --shadow-soft: 0 4px 6px -1px hsl(var(--foreground) / 0.1);
+    /* Harsh Neo-Brutal Shadows */
+    --shadow-brutal: 8px 8px 0px hsl(var(--foreground));
+    --shadow-brutal-lg: 12px 12px 0px hsl(var(--foreground));
+    --shadow-brutal-accent: 6px 6px 0px hsl(var(--accent));
+    --shadow-brutal-primary: 8px 8px 0px hsl(var(--primary));
     
-    /* Animation */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Sharp Animations */
+    --transition-brutal: all 0.1s ease-out;
+    --transition-bounce: all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
-    /* Radius */
-    --radius: 0.5rem;
+    /* Sharp Corners */
+    --radius: 0px;
   }
 
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 40% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 40% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 8%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 220 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 330 100% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 60 100% 60%;
+    --accent-foreground: 0 0% 5%;
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 100%;
+    --input: 0 0% 10%;
+    --ring: 0 0% 100%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -134,37 +138,69 @@
   }
 }
 
-/* Component layer for reusable patterns */
+/* Neo-Brutalistic Components */
 @layer components {
-  /* Glass effect */
-  .glass {
-    backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.125);
+  /* Content Scaling Support */
+  .content-scalable {
+    font-size: calc(1rem * var(--content-font-scale));
+    line-height: calc(1.5 * var(--content-font-scale));
   }
   
-  .glass-dark {
-    backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(17, 25, 40, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.125);
+  .content-scalable h1 {
+    font-size: calc(2.5rem * var(--content-font-scale));
+    line-height: calc(1.2 * var(--content-font-scale));
   }
   
-  /* Gradient text */
-  .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .content-scalable h2 {
+    font-size: calc(2rem * var(--content-font-scale));
+    line-height: calc(1.3 * var(--content-font-scale));
   }
   
-  /* Hover lift effect */
-  .hover-lift {
-    transition: var(--transition-smooth);
+  .content-scalable h3 {
+    font-size: calc(1.5rem * var(--content-font-scale));
+    line-height: calc(1.4 * var(--content-font-scale));
   }
   
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-elegant);
+  .content-scalable p, .content-scalable ul, .content-scalable ol {
+    font-size: calc(1rem * var(--content-font-scale));
+    line-height: calc(1.6 * var(--content-font-scale));
+  }
+  
+  /* Brutal box style */
+  .brutal-box {
+    border: 3px solid hsl(var(--foreground));
+    box-shadow: var(--shadow-brutal);
+    background: hsl(var(--background));
+    transition: var(--transition-brutal);
+  }
+  
+  .brutal-box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-brutal-lg);
+  }
+  
+  /* Brutal button */
+  .brutal-btn {
+    border: 3px solid hsl(var(--foreground));
+    box-shadow: var(--shadow-brutal);
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition-brutal);
+  }
+  
+  .brutal-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-brutal-lg);
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+  
+  /* Focus styles */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground focus-visible:ring-offset-2;
   }
   
   /* Animate in */
