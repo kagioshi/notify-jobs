@@ -88,14 +88,29 @@
                 "label": "Slot Name",
                 "options": [
                   "header",
-                  "mobile_sticky", 
+                  "header-banner",
+                  "mobile_sticky",
+                  "mobile_bottom",
                   "sidebar_top",
                   "sidebar_mid",
                   "sidebar_bottom",
                   "inline_top",
                   "inline_mid",
                   "inline_bottom",
-                  "footer"
+                  "content_top",
+                  "content_middle",
+                  "content_bottom",
+                  "floating_left",
+                  "floating_right",
+                  "hero_overlay",
+                  "between_posts_1",
+                  "between_posts_2",
+                  "between_posts_3",
+                  "category_sidebar",
+                  "job_detail_top",
+                  "job_detail_bottom",
+                  "footer",
+                  "interstitial"
                 ]
               }
             },
