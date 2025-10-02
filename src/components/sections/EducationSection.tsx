@@ -67,85 +67,85 @@ const EducationSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-muted/30">
+    <section className="py-16 px-4 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl brutal-heading mb-4">
             Education & Preparation
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-foreground/80 max-w-2xl mx-auto font-bold">
             Access free study material, preparation guides, and resources for government job exams
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {educationUpdates.map((item, index) => (
-            <Card 
+            <div 
               key={item.id} 
-              className="card-gradient hover:shadow-lg transition-all duration-300 animate-fade-in"
+              className="brutal-box bg-background hover:-rotate-1 transition-all animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <CardHeader className="pb-3">
+              <div className="p-4 border-b-4 border-foreground bg-muted/50">
                 <div className="flex items-center justify-between mb-2">
                   <Badge 
                     variant={item.isPopular ? "default" : "outline"} 
-                    className="text-xs"
+                    className="text-xs font-black"
                   >
                     {item.category}
                   </Badge>
                   {item.isPopular && (
-                    <Badge variant="destructive" className="text-xs">POPULAR</Badge>
+                    <Badge variant="default" className="text-xs bg-destructive border-2 border-foreground">POPULAR</Badge>
                   )}
                 </div>
-                <CardTitle className="text-lg leading-tight">
+                <h3 className="text-lg leading-tight font-black text-foreground">
                   {item.title}
-                </CardTitle>
-              </CardHeader>
+                </h3>
+              </div>
               
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+              <div className="p-4">
+                <p className="text-foreground/70 text-sm font-bold mb-4 line-clamp-2">
                   {item.description}
                 </p>
                 
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center text-muted-foreground text-xs">
+                <div className="flex items-center justify-between mb-4 text-xs font-bold">
+                  <div className="flex items-center text-foreground/70">
                     {item.subscribers ? (
                       <>
-                        <Users className="w-4 h-4 mr-1" />
-                        <span>{item.subscribers} subscribers</span>
+                        <Users className="w-4 h-4 mr-1" strokeWidth={3} />
+                        <span>{item.subscribers}</span>
                       </>
                     ) : (
                       <>
-                        <BookOpen className="w-4 h-4 mr-1" />
-                        <span>{item.downloads} downloads</span>
+                        <BookOpen className="w-4 h-4 mr-1" strokeWidth={3} />
+                        <span>{item.downloads}</span>
                       </>
                     )}
                   </div>
-                  <div className="flex items-center text-muted-foreground text-xs">
-                    <Calendar className="w-4 h-4 mr-1" />
+                  <div className="flex items-center text-foreground/70">
+                    <Calendar className="w-4 h-4 mr-1" strokeWidth={3} />
                     <span>Updated</span>
                   </div>
                 </div>
                 
                 <Button 
-                  variant="outline" 
+                  variant="brutal" 
                   size="sm" 
-                  className="w-full group hover:bg-primary hover:text-primary-foreground"
+                  className="w-full group"
                 >
                   <span className="mr-2">
                     {item.subscribers ? 'Subscribe' : 'Download'}
                   </span>
-                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="px-8">
+          <Button size="lg" variant="brutal" className="px-8">
             View All Education Resources
-            <ExternalLink className="w-5 h-5 ml-2" />
+            <ExternalLink className="w-5 h-5 ml-2" strokeWidth={3} />
           </Button>
         </div>
       </div>

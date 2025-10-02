@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import BrutalAdSlot from '@/components/enhanced/BrutalAdSlot';
 
 const DepartmentsSection = () => {
   const departments = [
@@ -51,19 +52,23 @@ const DepartmentsSection = () => {
   ];
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-4 bg-muted/30">
       <div className="container mx-auto">
+        <div className="mb-8">
+          <BrutalAdSlot name="departments-top" variant="colored" />
+        </div>
+        
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Departments */}
           <div>
-            <h2 className="text-xl font-bold text-foreground mb-4">Departments</h2>
-            <div className="flex flex-wrap gap-2">
+            <h2 className="text-2xl brutal-heading mb-6">Departments</h2>
+            <div className="flex flex-wrap gap-3">
               {departments.map((dept, index) => (
                 <Button
                   key={dept}
-                  variant="outline"
+                  variant="brutal"
                   size="sm"
-                  className="text-xs mb-2 animate-fade-in hover:bg-primary hover:text-primary-foreground"
+                  className="text-xs animate-fade-in"
                   style={{ animationDelay: `${index * 20}ms` }}
                 >
                   {dept}
@@ -74,62 +79,62 @@ const DepartmentsSection = () => {
 
           {/* Game Job Notifications */}
           <div>
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Game Job Notifications</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
+            <div className="brutal-box bg-background">
+              <div className="p-4 border-b-4 border-foreground">
+                <h3 className="text-lg brutal-heading">Game Job Notifications</h3>
+              </div>
+              <div className="p-4 space-y-2">
                 {gameNotifications.map((notification, index) => (
                   <div 
                     key={index}
-                    className="job-item p-2 rounded text-sm hover:text-primary cursor-pointer animate-fade-in"
+                    className="p-3 border-2 border-foreground bg-accent/10 text-sm font-bold hover:bg-accent hover:translate-x-1 cursor-pointer animate-fade-in transition-all"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     • {notification}
                   </div>
                 ))}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           {/* Answer Keys */}
           <div>
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Answer Keys</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
+            <div className="brutal-box bg-background">
+              <div className="p-4 border-b-4 border-foreground">
+                <h3 className="text-lg brutal-heading">Answer Keys</h3>
+              </div>
+              <div className="p-4 space-y-2">
                 {answerKeys.map((key, index) => (
                   <div 
                     key={index}
-                    className="job-item p-2 rounded text-sm hover:text-primary cursor-pointer animate-fade-in"
+                    className="p-3 border-2 border-foreground bg-secondary/10 text-sm font-bold hover:bg-secondary hover:translate-x-1 cursor-pointer animate-fade-in transition-all"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     • {key}
                   </div>
                 ))}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           {/* Syllabus */}
           <div>
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Syllabus</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
+            <div className="brutal-box bg-background">
+              <div className="p-4 border-b-4 border-foreground">
+                <h3 className="text-lg brutal-heading">Syllabus</h3>
+              </div>
+              <div className="p-4 space-y-2">
                 {syllabus.map((item, index) => (
                   <div 
                     key={index}
-                    className="job-item p-2 rounded text-sm hover:text-primary cursor-pointer animate-fade-in"
+                    className="p-3 border-2 border-foreground bg-primary/10 text-sm font-bold hover:bg-primary hover:translate-x-1 cursor-pointer animate-fade-in transition-all"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     • {item}
                   </div>
                 ))}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </div>

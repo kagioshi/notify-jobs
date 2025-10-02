@@ -60,39 +60,37 @@ const CategoriesSection = () => {
     <section className="py-16 px-4 bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl brutal-heading mb-4">
             Browse by Category
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-bold">
             Find jobs in your preferred industry or field
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <Card 
+              <div
                 key={category.id} 
-                className={`category-card ${category.className} cursor-pointer group animate-fade-in border-0`}
+                className="brutal-box-colored cursor-pointer group animate-fade-in p-6 text-center bg-gradient-to-br from-primary/20 to-accent/20 hover:rotate-1"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                    <IconComponent className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {category.title}
-                  </h3>
-                  <p className="text-white/90 text-sm mb-4">
-                    {category.description}
-                  </p>
-                  <div className="flex items-center justify-center text-white/80 group-hover:text-white transition-colors">
-                    <span className="text-sm font-medium mr-2">View Jobs</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </CardContent>
-              </Card>
+                <div className="w-20 h-20 mx-auto mb-4 brutal-box bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <IconComponent className="w-10 h-10 text-accent-foreground" strokeWidth={3} />
+                </div>
+                <h3 className="text-2xl font-black text-foreground mb-2 uppercase tracking-tight">
+                  {category.title}
+                </h3>
+                <p className="text-foreground/80 text-sm font-bold mb-4">
+                  {category.description}
+                </p>
+                <div className="flex items-center justify-center text-foreground font-black uppercase text-xs group-hover:translate-x-2 transition-transform">
+                  <span className="mr-2">View Jobs</span>
+                  <ArrowRight className="w-4 h-4" strokeWidth={3} />
+                </div>
+              </div>
             );
           })}
         </div>

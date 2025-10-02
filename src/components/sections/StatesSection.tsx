@@ -10,17 +10,17 @@ const StatesSection = () => {
   ];
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-4 bg-muted/30">
       <div className="container mx-auto">
-        <h2 className="text-2xl font-bold text-foreground mb-6">States</h2>
+        <h2 className="text-3xl brutal-heading mb-8">States</h2>
         
-        <div className="grid grid-cols-6 md:grid-cols-9 lg:grid-cols-12 gap-3">
+        <div className="grid grid-cols-6 md:grid-cols-9 lg:grid-cols-12 gap-4">
           {states.map((state, index) => (
             <Button
               key={state}
-              variant="outline"
+              variant="brutal"
               size="sm"
-              className="state-button text-xs font-medium h-10 animate-fade-in hover:scale-105"
+              className="text-xs font-black h-12 animate-fade-in uppercase"
               style={{ animationDelay: `${index * 30}ms` }}
             >
               {state}

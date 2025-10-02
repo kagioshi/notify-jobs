@@ -126,8 +126,8 @@ const BrutalAdSlot: React.FC<BrutalAdSlotProps> = ({
 
   const variantClasses = {
     default: 'brutal-box bg-muted/50',
-    colored: 'brutal-box-colored bg-gradient-to-br from-primary/10 to-accent/10 shadow-[8px_8px_0px_0px] shadow-primary',
-    minimal: 'border-2 border-foreground bg-background'
+    colored: 'brutal-box-colored bg-gradient-to-br from-primary/10 to-accent/10',
+    minimal: 'border-4 border-foreground bg-background'
   };
 
   return (

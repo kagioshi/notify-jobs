@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { AdSlot } from '@/components/common/AdSlot';
+import BrutalAdSlot from '@/components/enhanced/BrutalAdSlot';
 
 const Footer = () => {
   const quickLinks = [
@@ -28,32 +28,32 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-background border-t-8 border-foreground">
       {/* Ad Slot - Footer */}
       <div className="container mx-auto px-4 py-6">
-        <AdSlot name="footer" />
+        <BrutalAdSlot name="footer" variant="colored" />
       </div>
 
       {/* Main Footer Content */}
-      <div className="bg-muted">
+      <div className="bg-muted/50 border-y-4 border-foreground">
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold">J</span>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-12 h-12 bg-primary border-4 border-foreground flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <span className="text-primary-foreground font-black text-xl">J</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-foreground">JobAlert</h3>
-                  <p className="text-xs text-muted-foreground">Find Your Dream Job</p>
+                  <h3 className="text-xl brutal-heading">JobAlert</h3>
+                  <p className="text-xs font-bold text-muted-foreground uppercase">Find Your Dream Job</p>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-foreground/80 font-bold mb-4">
                 Your trusted source for government job notifications, results, and admit cards. 
                 Stay updated with the latest opportunities across India.
               </p>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm font-bold text-foreground space-y-1">
                 <p>📧 info@jobalert.com</p>
                 <p>📱 +91 9876543210</p>
               </div>
@@ -61,15 +61,15 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">Quick Links</h4>
-              <ul className="space-y-2">
+              <h4 className="text-lg brutal-heading mb-4">Quick Links</h4>
+               <ul className="space-y-2">
                  {quickLinks.map((link) => (
                    <li key={link.href}>
                      <Link 
                        href={link.href}
-                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                       className="text-sm font-bold text-foreground/80 hover:text-primary hover:translate-x-1 inline-block transition-all"
                      >
-                       {link.label}
+                       → {link.label}
                      </Link>
                    </li>
                  ))}
@@ -78,15 +78,15 @@ const Footer = () => {
  
              {/* Categories */}
              <div>
-               <h4 className="text-lg font-semibold text-foreground mb-4">Categories</h4>
+               <h4 className="text-lg brutal-heading mb-4">Categories</h4>
                <ul className="space-y-2">
                  {categories.map((category) => (
                    <li key={category.href}>
                      <Link 
                        href={category.href}
-                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                       className="text-sm font-bold text-foreground/80 hover:text-secondary hover:translate-x-1 inline-block transition-all"
                      >
-                       {category.label}
+                       → {category.label}
                      </Link>
                    </li>
                  ))}
@@ -95,15 +95,15 @@ const Footer = () => {
  
              {/* Resources */}
              <div>
-               <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
+               <h4 className="text-lg brutal-heading mb-4">Resources</h4>
                <ul className="space-y-2">
                  {resources.map((resource) => (
                    <li key={resource.href}>
                      <Link 
                        href={resource.href}
-                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                       className="text-sm font-bold text-foreground/80 hover:text-accent hover:translate-x-1 inline-block transition-all"
                      >
-                       {resource.label}
+                       → {resource.label}
                      </Link>
                    </li>
                  ))}
@@ -114,20 +114,20 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="bg-foreground text-background">
+      <div className="bg-foreground text-background border-t-4 border-background">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm mb-4 md:mb-0">
+            <div className="text-sm font-black mb-4 md:mb-0 uppercase tracking-wide">
               © 2024 JobAlert. All rights reserved.
             </div>
-             <div className="flex space-x-6 text-sm">
-               <Link href="/privacy" className="hover:text-muted-foreground transition-colors">
+             <div className="flex space-x-6 text-sm font-bold">
+               <Link href="/privacy" className="hover:text-accent transition-colors uppercase">
                  Privacy Policy
                </Link>
-               <Link href="/terms" className="hover:text-muted-foreground transition-colors">
+               <Link href="/terms" className="hover:text-accent transition-colors uppercase">
                  Terms of Service
                </Link>
-               <Link href="/contact" className="hover:text-muted-foreground transition-colors">
+               <Link href="/contact" className="hover:text-accent transition-colors uppercase">
                  Contact Us
                </Link>
              </div>
