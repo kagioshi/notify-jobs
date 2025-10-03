@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef, useEffect, useState } from 'react'
+import DOMPurify from 'dompurify'
 import { cn } from '@/lib/utils'
 import { createClient } from '../../../prismicio'
 
@@ -95,37 +96,16 @@ const EnhancedAdSlot: React.FC<AdSlotProps> = ({
     if (!container) return
 
     try {
-      // Clear existing content
-      container.innerHTML = ''
+      // Sanitize HTML to prevent XSS attacks
+      const cleanHTML = DOMPurify.sanitize(adContent, {
+        ALLOWED_TAGS: ['div', 'span', 'img', 'a', 'p', 'br', 'strong', 'em', 'iframe', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+        ALLOWED_ATTR: ['href', 'src', 'alt', 'class', 'id', 'style', 'target', 'rel', 'width', 'height'],
+        ALLOW_DATA_ATTR: false,
+        FORBID_TAGS: ['script', 'style'],
+        FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onmouseout', 'oninput', 'onchange']
+      });
 
-      // Create a temporary container to parse HTML
-      const tempDiv = document.createElement('div')
-      tempDiv.innerHTML = adContent
-
-      // Move all nodes to the actual container
-      while (tempDiv.firstChild) {
-        container.appendChild(tempDiv.firstChild)
-      }
-
-      // Re-execute script tags for ad networks
-      const scripts = container.querySelectorAll('script')
-      scripts.forEach((oldScript) => {
-        const newScript = document.createElement('script')
-        
-        if (oldScript.src) {
-          newScript.src = oldScript.src
-        } else {
-          newScript.textContent = oldScript.textContent
-        }
-        
-        // Copy other attributes
-        Array.from(oldScript.attributes).forEach(attr => {
-          newScript.setAttribute(attr.name, attr.value)
-        })
-
-        oldScript.parentNode?.replaceChild(newScript, oldScript)
-      })
-
+      container.innerHTML = cleanHTML;
       setIsLoaded(true)
       container.classList.add('loaded')
     } catch (error) {

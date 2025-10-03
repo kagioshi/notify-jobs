@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import DOMPurify from 'dompurify';
 
 interface AdSlotProps {
   name: string;
@@ -73,25 +74,16 @@ export const AdSlot: React.FC<AdSlotProps> = ({
     const container = ref.current;
     if (!container || !adContent) return;
 
-    // Insert the HTML content
-    container.innerHTML = adContent;
-
-    // Execute any scripts in the ad content (be careful - only trust admin content)
-    const scripts = Array.from(container.querySelectorAll('script'));
-    scripts.forEach((oldScript) => {
-      const newScript = document.createElement('script');
-      if (oldScript.src) {
-        newScript.src = oldScript.src;
-      } else {
-        newScript.textContent = oldScript.textContent;
-      }
-      // Copy attributes
-      Array.from(oldScript.attributes).forEach(attr => {
-        newScript.setAttribute(attr.name, attr.value);
-      });
-      document.head.appendChild(newScript);
-      document.head.removeChild(newScript);
+    // Sanitize HTML to prevent XSS attacks
+    const cleanHTML = DOMPurify.sanitize(adContent, {
+      ALLOWED_TAGS: ['div', 'span', 'img', 'a', 'p', 'br', 'strong', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'button'],
+      ALLOWED_ATTR: ['href', 'src', 'alt', 'class', 'id', 'style', 'target', 'rel'],
+      ALLOW_DATA_ATTR: false,
+      FORBID_TAGS: ['script', 'style'],
+      FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onmouseout', 'oninput', 'onchange']
     });
+
+    container.innerHTML = cleanHTML;
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [adContent]);

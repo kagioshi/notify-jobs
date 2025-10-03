@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import DOMPurify from 'dompurify';
 import { createClient } from '../../../prismicio';
 
 interface BrutalAdSlotProps {
@@ -89,17 +90,16 @@ const BrutalAdSlot: React.FC<BrutalAdSlotProps> = ({
 
   useEffect(() => {
     if (adContent && adRef.current && isVisible) {
-      adRef.current.innerHTML = adContent;
-
-      const scripts = adRef.current.querySelectorAll('script');
-      scripts.forEach((script) => {
-        const newScript = document.createElement('script');
-        Array.from(script.attributes).forEach((attr) => {
-          newScript.setAttribute(attr.name, attr.value);
-        });
-        newScript.textContent = script.textContent;
-        document.head.appendChild(newScript);
+      // Sanitize HTML to prevent XSS attacks
+      const cleanHTML = DOMPurify.sanitize(adContent, {
+        ALLOWED_TAGS: ['div', 'span', 'img', 'a', 'p', 'br', 'strong', 'em', 'iframe', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+        ALLOWED_ATTR: ['href', 'src', 'alt', 'class', 'id', 'style', 'target', 'rel', 'width', 'height'],
+        ALLOW_DATA_ATTR: false,
+        FORBID_TAGS: ['script', 'style'],
+        FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onmouseout', 'oninput', 'onchange']
       });
+      
+      adRef.current.innerHTML = cleanHTML;
     }
   }, [adContent, isVisible]);
 
