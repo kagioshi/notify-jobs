@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
 import { 
   Code, 
   Heart, 
@@ -15,84 +14,82 @@ const CategoriesSection = () => {
     {
       id: 'technology',
       title: 'Technology',
-      description: 'Software development, IT and tech roles',
+      description: 'Software, IT & Tech Roles',
       icon: Code,
-      className: 'category-tech',
+      color: 'bg-[hsl(var(--primary))]',
     },
     {
       id: 'healthcare',
       title: 'Healthcare',
-      description: 'Medical, nursing, and healthcare positions',
+      description: 'Medical & Nursing Jobs',
       icon: Heart,
-      className: 'category-healthcare',
+      color: 'bg-[hsl(var(--secondary))]',
     },
     {
       id: 'finance',
       title: 'Finance',
-      description: 'Banking, accounting, and financial services',
+      description: 'Banking & Accounting',
       icon: DollarSign,
-      className: 'category-finance',
+      color: 'bg-[hsl(var(--accent))]',
     },
     {
       id: 'education',
       title: 'Education',
-      description: 'Teaching, administration and educational roles',
+      description: 'Teaching & Admin Roles',
       icon: GraduationCap,
-      className: 'category-education',
+      color: 'bg-[hsl(var(--brutal-orange))]',
     },
     {
       id: 'marketing',
       title: 'Marketing',
-      description: 'Digital marketing, advertising and PR',
+      description: 'Digital Marketing & PR',
       icon: Megaphone,
-      className: 'category-marketing',
+      color: 'bg-[hsl(var(--brutal-green))]',
     },
     {
       id: 'design',
       title: 'Design',
-      description: 'UI/UX, graphic design and creative roles',
+      description: 'UI/UX & Creative Roles',
       icon: Palette,
-      className: 'category-design',
+      color: 'bg-[hsl(var(--hot-pink))]',
     },
   ];
 
   return (
-    <section className="py-16 px-4 bg-background">
+    <section className="py-16 px-4 bg-background border-y-4 border-foreground">
       <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="brutal-heading text-3xl md:text-4xl mb-4">
             Browse by Category
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Find jobs in your preferred industry or field
+          <p className="text-lg font-bold text-muted-foreground uppercase tracking-tight">
+            Find Jobs in Your Preferred Industry
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <Card 
-                key={category.id} 
-                className={`category-card ${category.className} cursor-pointer group animate-fade-in border-0`}
+              <div
+                key={category.id}
+                className={`${category.color} category-card cursor-pointer p-8 text-center animate-fade-in group`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                    <IconComponent className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {category.title}
-                  </h3>
-                  <p className="text-white/90 text-sm mb-4">
-                    {category.description}
-                  </p>
-                  <div className="flex items-center justify-center text-white/80 group-hover:text-white transition-colors">
-                    <span className="text-sm font-medium mr-2">View Jobs</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </CardContent>
-              </Card>
+                <div className="w-20 h-20 mx-auto mb-6 bg-white border-4 border-foreground shadow-[6px_6px_0px_hsl(var(--foreground))] group-hover:shadow-[8px_8px_0px_hsl(var(--foreground))] group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] transition-all flex items-center justify-center">
+                  <IconComponent className="w-10 h-10 text-foreground" />
+                </div>
+                <h3 className="text-2xl font-black text-white mb-3 uppercase tracking-tight">
+                  {category.title}
+                </h3>
+                <p className="text-white font-bold text-sm mb-6 uppercase tracking-tight">
+                  {category.description}
+                </p>
+                <div className="flex items-center justify-center gap-2 text-white group-hover:translate-x-1 transition-transform">
+                  <span className="text-sm font-black uppercase">View Jobs</span>
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </div>
             );
           })}
         </div>

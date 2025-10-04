@@ -1,6 +1,4 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const DepartmentsSection = () => {
   const departments = [
@@ -51,85 +49,71 @@ const DepartmentsSection = () => {
   ];
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-4 bg-background border-y-4 border-foreground">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Departments */}
-          <div>
-            <h2 className="text-xl font-bold text-foreground mb-4">Departments</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Departments - Brutal Box */}
+          <div className="brutal-box bg-[hsl(var(--primary))] p-6">
+            <h2 className="brutal-heading text-xl mb-4 text-white">Departments</h2>
             <div className="flex flex-wrap gap-2">
               {departments.map((dept, index) => (
-                <Button
+                <button
                   key={dept}
-                  variant="outline"
-                  size="sm"
-                  className="text-xs mb-2 animate-fade-in hover:bg-primary hover:text-primary-foreground"
+                  className="bg-white text-foreground px-3 py-2 border-2 border-foreground shadow-[2px_2px_0px_hsl(var(--foreground))] hover:shadow-[4px_4px_0px_hsl(var(--foreground))] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all text-xs font-black uppercase animate-fade-in"
                   style={{ animationDelay: `${index * 20}ms` }}
                 >
                   {dept}
-                </Button>
+                </button>
               ))}
             </div>
           </div>
 
-          {/* Game Job Notifications */}
-          <div>
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Game Job Notifications</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {gameNotifications.map((notification, index) => (
-                  <div 
-                    key={index}
-                    className="job-item p-2 rounded text-sm hover:text-primary cursor-pointer animate-fade-in"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    • {notification}
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+          {/* Game Job Notifications - Brutal Box */}
+          <div className="brutal-box bg-[hsl(var(--secondary))] p-6">
+            <h3 className="brutal-heading text-lg mb-4 text-white">Latest Jobs</h3>
+            <div className="space-y-2">
+              {gameNotifications.map((notification, index) => (
+                <div 
+                  key={index}
+                  className="bg-white text-foreground p-3 border-2 border-foreground shadow-[2px_2px_0px_hsl(var(--foreground))] hover:shadow-[4px_4px_0px_hsl(var(--foreground))] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all text-sm font-bold cursor-pointer animate-fade-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  → {notification}
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Answer Keys */}
-          <div>
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Answer Keys</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {answerKeys.map((key, index) => (
-                  <div 
-                    key={index}
-                    className="job-item p-2 rounded text-sm hover:text-primary cursor-pointer animate-fade-in"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    • {key}
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+          {/* Answer Keys - Brutal Box */}
+          <div className="brutal-box bg-[hsl(var(--accent))] p-6">
+            <h3 className="brutal-heading text-lg mb-4 text-foreground">Answer Keys</h3>
+            <div className="space-y-2">
+              {answerKeys.map((key, index) => (
+                <div 
+                  key={index}
+                  className="bg-white text-foreground p-3 border-2 border-foreground shadow-[2px_2px_0px_hsl(var(--foreground))] hover:shadow-[4px_4px_0px_hsl(var(--foreground))] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all text-sm font-bold cursor-pointer animate-fade-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  → {key}
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Syllabus */}
-          <div>
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle className="text-lg">Syllabus</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {syllabus.map((item, index) => (
-                  <div 
-                    key={index}
-                    className="job-item p-2 rounded text-sm hover:text-primary cursor-pointer animate-fade-in"
-                    style={{ animationDelay: `${index * 50}ms` }}
-                  >
-                    • {item}
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+          {/* Syllabus - Brutal Box */}
+          <div className="brutal-box bg-[hsl(var(--brutal-green))] p-6">
+            <h3 className="brutal-heading text-lg mb-4 text-white">Syllabus</h3>
+            <div className="space-y-2">
+              {syllabus.map((item, index) => (
+                <div 
+                  key={index}
+                  className="bg-white text-foreground p-3 border-2 border-foreground shadow-[2px_2px_0px_hsl(var(--foreground))] hover:shadow-[4px_4px_0px_hsl(var(--foreground))] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all text-sm font-bold cursor-pointer animate-fade-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  → {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

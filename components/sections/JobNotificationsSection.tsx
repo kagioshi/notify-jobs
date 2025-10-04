@@ -1,260 +1,265 @@
+'use client';
+
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Calendar, 
-  MapPin, 
-  Users, 
-  ExternalLink, 
-  Download,
-  Clock,
-  Building2
-} from 'lucide-react';
+import { Calendar, MapPin, Users, ArrowRight, Briefcase, Loader2 } from 'lucide-react';
 import { AdSlot } from '@/components/common/AdSlot';
+import { useJobNotifications, useResults, useAdmitCards } from '@/src/hooks/usePrismic';
 
 const JobNotificationsSection = () => {
-  const jobNotifications = [
+  // Fetch data from Prismic CMS
+  const { data: prismicJobs, isLoading, isError } = useJobNotifications();
+  const { data: prismicResults } = useResults();
+  const { data: prismicAdmitCards } = useAdmitCards();
+
+  // Mock data as fallback
+  const mockJobs = [
     {
-      id: 1,
-      title: 'IBPS Clerk Recruitment 2024',
-      organization: 'Institute of Banking Personnel Selection',
-      location: 'All India',
-      vacancies: 10000,
-      publishedDate: '2024-01-15',
-      lastDate: '2024-02-15',
-      category: 'Banking',
-      isNew: true,
-      isFeatured: true,
-    },
-    {
-      id: 2,
-      title: 'SSC CHSL Notification 2024',
+      id: '1',
+      title: 'SSC CGL 2024 Notification',
       organization: 'Staff Selection Commission',
-      location: 'All India',
-      vacancies: 4500,
-      publishedDate: '2024-01-12',
-      lastDate: '2024-02-12',
-      category: 'Government',
+      posts: '17727',
+      lastDate: '2024-02-15',
+      category: 'Central Govt',
+      state: 'All India',
       isNew: true,
+      color: 'bg-[hsl(var(--primary))]',
     },
     {
-      id: 3,
+      id: '2',
       title: 'Railway Group D Recruitment',
       organization: 'Indian Railways',
-      location: 'Pan India',
-      vacancies: 62000,
-      publishedDate: '2024-01-10',
+      posts: '103769',
       lastDate: '2024-02-20',
       category: 'Railway',
-      isNew: false,
+      state: 'All India',
+      isNew: true,
+      color: 'bg-[hsl(var(--secondary))]',
     },
     {
-      id: 4,
-      title: 'UPSC Civil Services 2024',
+      id: '3',
+      title: 'IBPS PO 2024',
+      organization: 'Institute of Banking Personnel Selection',
+      posts: '4135',
+      lastDate: '2024-02-10',
+      category: 'Banking',
+      state: 'All India',
+      isNew: false,
+      color: 'bg-[hsl(var(--accent))]',
+    },
+    {
+      id: '4',
+      title: 'UPSC Civil Services Exam',
       organization: 'Union Public Service Commission',
-      location: 'All India',
-      vacancies: 1000,
-      publishedDate: '2024-01-08',
+      posts: '1000',
       lastDate: '2024-03-01',
       category: 'UPSC',
-      isFeatured: true,
+      state: 'All India',
+      isNew: true,
+      color: 'bg-[hsl(var(--brutal-orange))]',
     },
     {
-      id: 5,
-      title: 'Police Constable Recruitment',
+      id: '5',
+      title: 'State Police Constable Recruitment',
       organization: 'State Police Department',
-      location: 'Multiple States',
-      vacancies: 8000,
-      publishedDate: '2024-01-05',
-      lastDate: '2024-02-05',
+      posts: '5000',
+      lastDate: '2024-02-25',
       category: 'Police',
+      state: 'Multiple States',
+      isNew: false,
+      color: 'bg-[hsl(var(--brutal-green))]',
     },
   ];
 
-  const results = [
-    {
-      id: 1,
-      title: 'SBI PO Result 2023',
-      organization: 'State Bank of India',
-      publishedDate: '2024-01-14',
-      category: 'Banking',
-    },
-    {
-      id: 2,
-      title: 'NEET UG Result 2023',
-      organization: 'National Testing Agency',
-      publishedDate: '2024-01-12',
-      category: 'Medical',
-    },
-    {
-      id: 3,
-      title: 'JEE Main Result 2024',
-      organization: 'National Testing Agency',
-      publishedDate: '2024-01-10',
-      category: 'Engineering',
-    },
-  ];
+  // Use Prismic data if available, otherwise use mock data
+  const jobs = prismicJobs && prismicJobs.length > 0 
+    ? prismicJobs.map((job: any, index: number) => ({
+        id: job.id,
+        title: job.data?.title || 'Job Title',
+        organization: job.data?.organization || 'Organization',
+        posts: job.data?.posts || 'N/A',
+        lastDate: job.data?.last_date || 'TBA',
+        category: job.data?.category || 'General',
+        state: job.data?.state || 'All India',
+        isNew: job.data?.is_new || false,
+        color: ['bg-[hsl(var(--primary))]', 'bg-[hsl(var(--secondary))]', 'bg-[hsl(var(--accent))]', 'bg-[hsl(var(--brutal-orange))]', 'bg-[hsl(var(--brutal-green))]'][index % 5],
+      }))
+    : mockJobs;
 
-  const admitCards = [
-    {
-      id: 1,
-      title: 'IBPS Clerk Admit Card 2024',
-      organization: 'IBPS',
-      examDate: '2024-02-20',
-      category: 'Banking',
-    },
-    {
-      id: 2,
-      title: 'SSC MTS Admit Card',
-      organization: 'Staff Selection Commission',
-      examDate: '2024-02-25',
-      category: 'Government',
-    },
+  const quickLinks = [
+    { label: 'Latest Jobs', count: jobs.length.toString(), icon: Briefcase, color: 'bg-[hsl(var(--primary))]' },
+    { label: 'Results', count: prismicResults?.length.toString() || '200+', icon: Calendar, color: 'bg-[hsl(var(--secondary))]' },
+    { label: 'Admit Cards', count: prismicAdmitCards?.length.toString() || '150+', icon: MapPin, color: 'bg-[hsl(var(--accent))]' },
+    { label: 'Answer Keys', count: '100+', icon: Users, color: 'bg-[hsl(var(--brutal-orange))]' },
   ];
 
   return (
-    <section className="py-12 px-4 bg-muted/30">
+    <section className="py-12 px-4 bg-background">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-3 space-y-8">
-            {/* Latest Job Notifications */}
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-foreground">Latest Job Notifications</h2>
-                <Button variant="outline" size="sm">
-                  View All
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
+        {/* Section Header - Brutal Style */}
+        <div className="mb-8">
+          <h2 className="brutal-heading text-3xl md:text-4xl mb-3">
+            Latest Job Notifications
+          </h2>
+          <p className="text-lg font-bold text-muted-foreground uppercase tracking-tight">
+            Don't Miss Out on These Opportunities
+            {prismicJobs && prismicJobs.length > 0 && (
+              <span className="ml-2 text-[hsl(var(--primary))]">• Live from Prismic CMS</span>
+            )}
+          </p>
+        </div>
 
-              <div className="space-y-4">
-                {jobNotifications.map((job, index) => (
-                  <Card 
-                    key={job.id} 
-                    className="job-item animate-fade-in hover:shadow-lg"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <h3 className="text-lg font-semibold text-foreground hover:text-primary cursor-pointer">
-                              {job.title}
-                            </h3>
-                            {job.isNew && (
-                              <Badge variant="destructive" className="text-xs">NEW</Badge>
-                            )}
-                            {job.isFeatured && (
-                              <Badge variant="secondary" className="text-xs">FEATURED</Badge>
-                            )}
-                          </div>
-                          
-                          <div className="flex items-center text-muted-foreground text-sm mb-2">
-                            <Building2 className="w-4 h-4 mr-1" />
-                            <span className="mr-4">{job.organization}</span>
-                            <MapPin className="w-4 h-4 mr-1" />
-                            <span className="mr-4">{job.location}</span>
-                            <Users className="w-4 h-4 mr-1" />
-                            <span>{job.vacancies.toLocaleString()} vacancies</span>
-                          </div>
-                          
-                          <div className="flex items-center text-muted-foreground text-sm">
-                            <Calendar className="w-4 h-4 mr-1" />
-                            <span className="mr-4">Published: {new Date(job.publishedDate).toLocaleDateString()}</span>
-                            <Clock className="w-4 h-4 mr-1" />
-                            <span className="text-destructive font-medium">
-                              Last Date: {new Date(job.lastDate).toLocaleDateString()}
-                            </span>
-                          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Main Job Listings */}
+          <div className="lg:col-span-2 space-y-4">
+            {/* Loading State */}
+            {isLoading && (
+              <div className="brutal-box bg-background p-12 text-center">
+                <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-4" />
+                <p className="font-black text-foreground uppercase">Loading Jobs from Prismic...</p>
+              </div>
+            )}
+
+            {/* Error State */}
+            {isError && !isLoading && (
+              <div className="brutal-box bg-[hsl(var(--accent))] p-6 text-center">
+                <p className="font-black text-foreground uppercase mb-2">⚠️ Prismic Connection Issue</p>
+                <p className="font-bold text-foreground text-sm">Showing mock data as fallback</p>
+              </div>
+            )}
+
+            {/* Job Cards */}
+            {!isLoading && jobs.map((job, index) => (
+              <div key={job.id}>
+                <Card className="job-item bg-background hover:bg-[hsl(var(--accent))]/10 cursor-pointer animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                  <CardContent className="p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                      <div className="flex-1">
+                        {/* Job Title - Brutal */}
+                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                          <h3 className="text-xl font-black text-foreground uppercase tracking-tight">
+                            {job.title}
+                          </h3>
+                          {job.isNew && (
+                            <Badge className="brutal-btn-accent text-xs px-2 py-1 border-2">
+                              NEW
+                            </Badge>
+                          )}
                         </div>
-                        
-                        <div className="flex items-center gap-2">
-                          <Badge variant="outline">{job.category}</Badge>
-                          <Button size="sm" variant="outline">
-                            <Download className="w-4 h-4 mr-2" />
-                            Details
-                          </Button>
-                          <Button size="sm">Apply Now</Button>
+
+                        {/* Organization */}
+                        <p className="text-sm font-bold text-muted-foreground mb-4 uppercase">
+                          {job.organization}
+                        </p>
+
+                        {/* Job Details - Brutal Icons */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          <div className="flex items-center gap-2">
+                            <div className={`${job.color} p-2 border-2 border-foreground`}>
+                              <Users className="w-4 h-4 text-white" />
+                            </div>
+                            <div>
+                              <p className="text-xs font-bold text-muted-foreground uppercase">Posts</p>
+                              <p className="text-sm font-black text-foreground">{job.posts}</p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <div className={`${job.color} p-2 border-2 border-foreground`}>
+                              <Calendar className="w-4 h-4 text-white" />
+                            </div>
+                            <div>
+                              <p className="text-xs font-bold text-muted-foreground uppercase">Last Date</p>
+                              <p className="text-sm font-black text-foreground">{job.lastDate}</p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <div className={`${job.color} p-2 border-2 border-foreground`}>
+                              <MapPin className="w-4 h-4 text-white" />
+                            </div>
+                            <div>
+                              <p className="text-xs font-bold text-muted-foreground uppercase">Location</p>
+                              <p className="text-sm font-black text-foreground">{job.state}</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
+
+                      {/* Action Button - Brutal */}
+                      <button className={`${job.color} text-white px-6 py-3 border-3 border-foreground shadow-[3px_3px_0px_hsl(var(--foreground))] hover:shadow-[5px_5px_0px_hsl(var(--foreground))] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all font-black text-sm uppercase tracking-tight whitespace-nowrap flex items-center gap-2`}>
+                        View Details
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Ad Slot after every 3rd job - Brutal Style */}
+                {(index + 1) % 3 === 0 && index !== jobs.length - 1 && (
+                  <div className="my-4 brutal-box p-4 bg-muted">
+                    <AdSlot name={`job-list-${index}`} />
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* Load More Button - Brutal */}
+            <div className="text-center pt-4">
+              <button className="brutal-btn-secondary px-8 py-4 text-base">
+                Load More Jobs
+              </button>
+            </div>
+          </div>
+
+          {/* Sidebar - Brutal Boxes */}
+          <div className="space-y-6">
+            {/* Quick Links - Brutal Cards */}
+            <div className="brutal-box bg-background p-6">
+              <h3 className="brutal-heading text-xl mb-4">Quick Access</h3>
+              <div className="space-y-3">
+                {quickLinks.map((link, index) => {
+                  const IconComponent = link.icon;
+                  return (
+                    <button
+                      key={link.label}
+                      className={`${link.color} w-full text-white p-4 border-3 border-foreground shadow-[3px_3px_0px_hsl(var(--foreground))] hover:shadow-[5px_5px_0px_hsl(var(--foreground))] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all text-left animate-fade-in`}
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <IconComponent className="w-5 h-5" />
+                          <span className="font-black uppercase text-sm">{link.label}</span>
+                        </div>
+                        <span className="font-black text-lg">{link.count}</span>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Ad Slot - Inline Content */}
-            <AdSlot name="content-inline" />
-          </div>
+            {/* Ad Slot - Sidebar - Brutal */}
+            <div className="brutal-box p-4 bg-muted">
+              <AdSlot name="sidebar" />
+            </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Ad Slot - Sidebar Top */}
-            <AdSlot name="sidebar-top" />
-
-            {/* Recent Results */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Latest Results</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {results.map((result) => (
-                  <div key={result.id} className="job-item p-3 rounded-lg">
-                    <h4 className="font-medium text-foreground text-sm hover:text-primary cursor-pointer">
-                      {result.title}
-                    </h4>
-                    <p className="text-muted-foreground text-xs mt-1">
-                      {result.organization}
-                    </p>
-                    <div className="flex justify-between items-center mt-2">
-                      <Badge variant="outline" className="text-xs">{result.category}</Badge>
-                      <span className="text-xs text-muted-foreground">
-                        {new Date(result.publishedDate).toLocaleDateString()}
-                      </span>
-                    </div>
-                  </div>
+            {/* Categories - Brutal */}
+            <div className="brutal-box bg-[hsl(var(--accent))] p-6">
+              <h3 className="brutal-heading text-xl mb-4 text-foreground">Top Categories</h3>
+              <div className="space-y-2">
+                {['Central Govt', 'State Govt', 'Banking', 'Railway', 'Police', 'Teaching'].map((category, index) => (
+                  <button
+                    key={category}
+                    className="w-full bg-background text-foreground px-4 py-3 border-3 border-foreground shadow-[2px_2px_0px_hsl(var(--foreground))] hover:shadow-[4px_4px_0px_hsl(var(--foreground))] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all font-black text-sm uppercase text-left animate-fade-in"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    → {category}
+                  </button>
                 ))}
-                <Button variant="outline" size="sm" className="w-full">
-                  View All Results
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Ad Slot - Sidebar Mid */}
-            <AdSlot name="sidebar-mid" />
-
-            {/* Admit Cards */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Admit Cards</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {admitCards.map((admit) => (
-                  <div key={admit.id} className="job-item p-3 rounded-lg">
-                    <h4 className="font-medium text-foreground text-sm hover:text-primary cursor-pointer">
-                      {admit.title}
-                    </h4>
-                    <p className="text-muted-foreground text-xs mt-1">
-                      {admit.organization}
-                    </p>
-                    <div className="flex justify-between items-center mt-2">
-                      <Badge variant="outline" className="text-xs">{admit.category}</Badge>
-                      <span className="text-xs text-muted-foreground">
-                        Exam: {new Date(admit.examDate).toLocaleDateString()}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-                <Button variant="outline" size="sm" className="w-full">
-                  View All Admit Cards
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Ad Slot - Sidebar Bottom */}
-            <AdSlot name="sidebar-bottom" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -28,109 +28,112 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card border-t border-border">
-      {/* Ad Slot - Footer */}
+    <footer className="bg-background border-t-4 border-foreground">
+      {/* Ad Slot - Footer - Brutal Style */}
       <div className="container mx-auto px-4 py-6">
-        <AdSlot name="footer" />
+        <div className="brutal-box p-4 bg-muted">
+          <AdSlot name="footer" />
+        </div>
       </div>
 
-      {/* Main Footer Content */}
-      <div className="bg-muted">
+      {/* Main Footer Content - Brutal Grid */}
+      <div className="bg-[hsl(var(--primary))] border-y-4 border-foreground">
         <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Company Info - Brutal Box */}
+            <div className="brutal-box bg-background p-6">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold">J</span>
+                <div className="w-10 h-10 bg-[hsl(var(--accent))] border-3 border-foreground shadow-[3px_3px_0px_hsl(var(--foreground))] flex items-center justify-center">
+                  <span className="text-foreground font-black text-xl">J</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-foreground">JobAlert</h3>
-                  <p className="text-xs text-muted-foreground">Find Your Dream Job</p>
+                  <h3 className="text-lg font-black text-foreground uppercase">JobAlert</h3>
+                  <p className="text-xs font-bold text-muted-foreground uppercase">Dream Job</p>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">
-                Your trusted source for government job notifications, results, and admit cards. 
-                Stay updated with the latest opportunities across India.
+              <p className="text-sm font-bold text-foreground mb-4 leading-relaxed">
+                Your trusted source for government job notifications, results, and admit cards.
               </p>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm font-bold text-foreground space-y-1">
                 <p>📧 info@jobalert.com</p>
                 <p>📱 +91 9876543210</p>
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">Quick Links</h4>
+            {/* Quick Links - Brutal Box */}
+            <div className="brutal-box bg-[hsl(var(--secondary))] p-6">
+              <h4 className="text-lg font-black text-white mb-4 uppercase tracking-tight">Quick Links</h4>
               <ul className="space-y-2">
-                 {quickLinks.map((link) => (
-                   <li key={link.href}>
-                     <Link 
-                       href={link.href}
-                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                     >
-                       {link.label}
-                     </Link>
-                   </li>
-                 ))}
-               </ul>
-             </div>
- 
-             {/* Categories */}
-             <div>
-               <h4 className="text-lg font-semibold text-foreground mb-4">Categories</h4>
-               <ul className="space-y-2">
-                 {categories.map((category) => (
-                   <li key={category.href}>
-                     <Link 
-                       href={category.href}
-                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                     >
-                       {category.label}
-                     </Link>
-                   </li>
-                 ))}
-               </ul>
-             </div>
- 
-             {/* Resources */}
-             <div>
-               <h4 className="text-lg font-semibold text-foreground mb-4">Resources</h4>
-               <ul className="space-y-2">
-                 {resources.map((resource) => (
-                   <li key={resource.href}>
-                     <Link 
-                       href={resource.href}
-                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                     >
-                       {resource.label}
-                     </Link>
-                   </li>
-                 ))}
+                {quickLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link 
+                      href={link.href}
+                      className="text-sm font-bold text-white hover:text-[hsl(var(--accent))] transition-colors uppercase tracking-tight block hover:translate-x-1 transition-transform"
+                    >
+                      → {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Categories - Brutal Box */}
+            <div className="brutal-box bg-[hsl(var(--accent))] p-6">
+              <h4 className="text-lg font-black text-foreground mb-4 uppercase tracking-tight">Categories</h4>
+              <ul className="space-y-2">
+                {categories.map((category) => (
+                  <li key={category.href}>
+                    <Link 
+                      href={category.href}
+                      className="text-sm font-bold text-foreground hover:text-[hsl(var(--primary))] transition-colors uppercase tracking-tight block hover:translate-x-1 transition-transform"
+                    >
+                      → {category.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources - Brutal Box */}
+            <div className="brutal-box bg-[hsl(var(--brutal-green))] p-6">
+              <h4 className="text-lg font-black text-white mb-4 uppercase tracking-tight">Resources</h4>
+              <ul className="space-y-2">
+                {resources.map((resource) => (
+                  <li key={resource.href}>
+                    <Link 
+                      href={resource.href}
+                      className="text-sm font-bold text-white hover:text-[hsl(var(--accent))] transition-colors uppercase tracking-tight block hover:translate-x-1 transition-transform"
+                    >
+                      → {resource.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="bg-foreground text-background">
+      {/* Bottom Footer - Brutal Style */}
+      <div className="bg-foreground text-background border-t-4 border-background">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-sm mb-4 md:mb-0">
-              © 2024 JobAlert. All rights reserved.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-sm font-black uppercase tracking-tight">
+              © 2024 JobAlert. All Rights Reserved.
             </div>
-             <div className="flex space-x-6 text-sm">
-               <Link href="/privacy" className="hover:text-muted-foreground transition-colors">
-                 Privacy Policy
-               </Link>
-               <Link href="/terms" className="hover:text-muted-foreground transition-colors">
-                 Terms of Service
-               </Link>
-               <Link href="/contact" className="hover:text-muted-foreground transition-colors">
-                 Contact Us
-               </Link>
-             </div>
+            <div className="flex flex-wrap justify-center gap-4 text-sm font-bold uppercase">
+              <Link href="/privacy" className="hover:text-[hsl(var(--accent))] transition-colors">
+                Privacy
+              </Link>
+              <span>|</span>
+              <Link href="/terms" className="hover:text-[hsl(var(--accent))] transition-colors">
+                Terms
+              </Link>
+              <span>|</span>
+              <Link href="/contact" className="hover:text-[hsl(var(--accent))] transition-colors">
+                Contact
+              </Link>
+            </div>
           </div>
         </div>
       </div>
