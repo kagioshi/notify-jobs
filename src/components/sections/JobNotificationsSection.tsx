@@ -21,35 +21,37 @@ const JobNotificationsSection = () => {
   const { data: admitCards = [] } = useAdmitCards();
 
   return (
-    <section className="py-16 px-4 bg-muted/30">
+    <section className="py-16 px-4 bg-muted/30 bg-pattern-stripes relative">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Latest Jobs Section */}
             <div>
-              <div className="brutal-box bg-primary p-4 mb-6 inline-block">
-                <h2 className="text-2xl md:text-3xl font-black text-primary-foreground uppercase tracking-tight flex items-center gap-2">
-                  <Zap className="w-8 h-8" />
+              <div className="brutal-box-tritone bg-gradient-to-r from-primary via-accent to-secondary p-6 mb-6 inline-block rotate-[-1deg] animate-rotate-in">
+                <h2 className="text-2xl md:text-3xl font-black text-background uppercase tracking-tighter flex items-center gap-2 text-glitch">
+                  <Zap className="w-8 h-8 animate-pulse" strokeWidth={4} />
                   LATEST JOB ALERTS
                 </h2>
               </div>
 
               <div className="space-y-6">
-                {jobNotifications.slice(0, 10).map((job: any, index: number) => (
-                  <React.Fragment key={job.id}>
-                    <Card className="brutal-card hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                {jobNotifications.slice(0, 10).map((job: any, index: number) => {
+                  const cardRotations = ['rotate-[-0.5deg]', 'rotate-[0.5deg]', 'rotate-[-1deg]', 'rotate-[1deg]'];
+                  return (
+                    <React.Fragment key={job.id}>
+                      <Card className={`hover:shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] hover:rotate-0 transition-all ${cardRotations[index % 4]}`}>
                       <CardHeader>
                         <div className="flex flex-wrap items-start justify-between gap-4">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
                               {job.data?.is_featured && (
-                                <Badge className="bg-accent text-accent-foreground border-2 border-foreground font-black">
-                                  HOT!
+                                <Badge variant="neon" className="animate-pulse">
+                                  🔥 HOT!
                                 </Badge>
                               )}
                               {job.data?.category && (
-                                <Badge variant="outline" className="border-2 border-foreground font-bold">
+                                <Badge variant="sticker" className="rotate-[-2deg]">
                                   {job.data.category}
                                 </Badge>
                               )}
@@ -93,18 +95,19 @@ const JobNotificationsSection = () => {
                           </p>
                         )}
                       </CardContent>
-                    </Card>
+                      </Card>
 
-                    {/* Insert Ad After Every 3rd Job */}
-                    {(index + 1) % 3 === 0 && (
-                      <BrutalAdSlot 
-                        name={`between_posts_${Math.floor((index + 1) / 3)}`}
-                        variant="colored"
-                        className="my-6"
-                      />
-                    )}
-                  </React.Fragment>
-                ))}
+                      {/* Insert Ad After Every 3rd Job */}
+                      {(index + 1) % 3 === 0 && (
+                        <BrutalAdSlot 
+                          name={`between_posts_${Math.floor((index + 1) / 3)}`}
+                          variant="colored"
+                          className="my-6"
+                        />
+                      )}
+                    </React.Fragment>
+                  );
+                })}
               </div>
             </div>
 
@@ -117,15 +120,15 @@ const JobNotificationsSection = () => {
 
             {/* Results Section */}
             <div>
-              <div className="brutal-box bg-secondary p-4 mb-6 inline-block">
-                <h2 className="text-2xl font-black text-secondary-foreground uppercase tracking-tight">
-                  LATEST RESULTS
+              <div className="brutal-box-neon bg-secondary p-6 mb-6 inline-block rotate-[1deg] animate-wobble">
+                <h2 className="text-2xl font-black text-secondary-foreground uppercase tracking-tighter brutal-stamped">
+                  ⭐ LATEST RESULTS
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {results.slice(0, 4).map((result: any) => (
-                  <Card key={result.id} className="brutal-card hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
+                {results.slice(0, 4).map((result: any, idx: number) => (
+                  <Card key={result.id} className={`hover:shadow-[14px_14px_0px_0px_rgba(0,0,0,1)] hover:rotate-0 ${idx % 2 === 0 ? 'rotate-[-1deg]' : 'rotate-[1deg]'}`}>
                     <CardHeader>
                       <CardTitle className="text-lg font-black uppercase">
                         {result.data?.title || 'Result Title'}
@@ -144,15 +147,15 @@ const JobNotificationsSection = () => {
 
             {/* Admit Cards Section */}
             <div>
-              <div className="brutal-box bg-accent p-4 mb-6 inline-block">
-                <h2 className="text-2xl font-black text-accent-foreground uppercase tracking-tight">
-                  ADMIT CARDS
+              <div className="brutal-box-tritone bg-accent p-6 mb-6 inline-block rotate-[-1deg] hover-wobble">
+                <h2 className="text-2xl font-black text-accent-foreground uppercase tracking-tighter brutal-stamped">
+                  🎫 ADMIT CARDS
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {admitCards.slice(0, 4).map((card: any) => (
-                  <Card key={card.id} className="brutal-card hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
+                {admitCards.slice(0, 4).map((card: any, idx: number) => (
+                  <Card key={card.id} className={`hover:shadow-[14px_14px_0px_0px_rgba(0,0,0,1)] hover:rotate-0 ${idx % 2 === 0 ? 'rotate-[1deg]' : 'rotate-[-1deg]'}`}>
                     <CardHeader>
                       <CardTitle className="text-lg font-black uppercase">
                         {card.data?.title || 'Admit Card Title'}
